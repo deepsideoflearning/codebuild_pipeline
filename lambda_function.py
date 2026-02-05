@@ -14,7 +14,7 @@ logger.setLevel(logging.INFO)
 # Environment Variables (Configured in Lambda)
 S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME', 'pvh-kareem')
 S3_FOLDER_PATH = os.getenv('S3_FOLDER_PATH', 'calendly/')
-SECRET_NAME = os.getenv('CALENDLY_SECRET_NAME', 'calendly-api-key')
+SECRET_NAME = os.getenv('CALENDLY_SECRET_NAME', 'calendly-api-key2')
 REGION_NAME = os.getenv('AWS_REGION', 'us-east-1')
 
 # Initialize AWS Clients
@@ -32,7 +32,7 @@ def get_calendly_api_key():
     try:
         response = secrets_client.get_secret_value(SecretId=SECRET_NAME)
         secret = json.loads(response['SecretString'])
-        return secret.get('calendly-api-key')
+        return secret.get('calendly-api-key2')
     except Exception as e:
         logger.error(f"Error fetching API key from Secrets Manager: {e}")
         raise
