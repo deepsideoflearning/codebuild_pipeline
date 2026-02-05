@@ -9,12 +9,12 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build --platform linux/amd64 -t calendly .
-      - docker tag calendly:latest 202642037030.dkr.ecr.us-west-1.amazonaws.com/calendly:$IMAGE_TAG
+      - docker build --platform linux/amd64 -t calendly_cd .
+      - docker tag calendly:latest 202642037030.dkr.ecr.us-west-1.amazonaws.com/calendly_cd:$IMAGE_TAG
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...
-      - docker push 202642037030.dkr.ecr.us-west-1.amazonaws.com/calendly:$IMAGE_TAG
+      - docker push 202642037030.dkr.ecr.us-west-1.amazonaws.com/calendly_cd:$IMAGE_TAG
       - echo Build completed successfully.
 
 artifacts:
